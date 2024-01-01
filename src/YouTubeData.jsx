@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useVideoQuery } from "./youtubeServices";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const YouTubeData = () => {
   const [videos, setVideos] = useState([]);
@@ -30,9 +31,13 @@ const YouTubeData = () => {
         Visit Jsonplaceholder DATA
       </NavLink>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
+      <InfiniteScroll
+        dataLength={videos.length}
+        next={fetchNextPage}
+        hasMore={data?.nextPageToken !== undefined}
+        loader={<p>Loading...</p>}
+        endMessage={<p>No more videos</p>}
+      >
         <div className="video-cards">
           {videos.map((currElem, index) => (
             <div className="card" key={currElem.id + index}>
@@ -41,12 +46,7 @@ const YouTubeData = () => {
             </div>
           ))}
         </div>
-      )}
-      {data?.nextPageToken && (
-        <button className="button" onClick={fetchNextPage}>
-          Next Page
-        </button>
-      )}
+      </InfiniteScroll>
     </div>
   );
 };
