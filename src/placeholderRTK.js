@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const pokemonApi = createApi({
-  reducerPath: "pokemonApi",
+export const placeholderRTK = createApi({
+  reducerPath: "placeholderRTK",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://jsonplaceholder.typicode.com",
   }),
@@ -12,4 +12,4 @@ export const pokemonApi = createApi({
   }),
 });
 
-export const { useGetDataQuery } = pokemonApi;
+export const { useGetDataQuery } = placeholderRTK;

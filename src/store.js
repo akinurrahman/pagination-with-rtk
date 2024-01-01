@@ -1,12 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { pokemonApi } from "./pokemonApi";
+import { placeholderRTK } from "./placeholderRTK";
+import { youtubeServices } from "./youtubeServices";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
+    [placeholderRTK.reducerPath]: placeholderRTK.reducer,
+    [youtubeServices.reducerPath]: youtubeServices.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(pokemonApi.middleware),
+    getDefaultMiddleware().concat(
+      placeholderRTK.middleware,
+      youtubeServices.middleware
+    ),
 });
 
 export default store;
