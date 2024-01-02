@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { placeholderRTK } from "./placeholderRTK";
-import { youtubeServices } from "./youtubeServices";
+import { youtubeService } from "./youtubeServices";
 
 const store = configureStore({
   reducer: {
     [placeholderRTK.reducerPath]: placeholderRTK.reducer,
-    [youtubeServices.reducerPath]: youtubeServices.reducer,
+    [youtubeService.reducerPath]: youtubeService.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       placeholderRTK.middleware,
-      youtubeServices.middleware
+      youtubeService.middleware
     ),
 });
 
